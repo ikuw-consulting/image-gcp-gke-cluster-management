@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+manifest_path="${1:-${CLUSTER_MANIFEST_DIR:-/kd/manifests}}"
+
+if [[ ! -e "${manifest_path}" ]]; then
+  echo "Manifest path does not exist: ${manifest_path}" >&2
+  exit 66
+fi
+
+kubectl apply --server-side --field-manager=kaptain-cluster-seed -f "${manifest_path}"

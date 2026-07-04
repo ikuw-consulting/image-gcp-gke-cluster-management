@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+command="${1:-welcome}"
+shift || true
+
+case "${command}" in
+  apply)
+    exec cluster-apply "$@"
+    ;;
+  list)
+    subcommand="${1:-all}"
+    shift || true
+    exec "cluster-list-${subcommand}" "$@"
+    ;;
+  setup-credentials)
+    exec cluster-setup-credentials "$@"
+    ;;
+  validate-image)
+    exec cluster-validate-image "$@"
+    ;;
+  wait)
+    exec cluster-wait "$@"
+    ;;
+  welcome)
+    exec cluster-welcome "$@"
+    ;;
+  *)
+    echo "Unknown cluster command: ${command}" >&2
+    echo "Try: cluster validate-image, setup-credentials, apply, wait, list all" >&2
+    exit 64
+    ;;
+esac

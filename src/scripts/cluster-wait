@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+selector="${1:-}"
+
+if [[ -n "${selector}" ]]; then
+  kubectl wait --for=condition=available --timeout=300s deployment --all-namespaces -l "${selector}"
+else
+  kubectl wait --for=condition=available --timeout=300s deployment --all-namespaces
+fi

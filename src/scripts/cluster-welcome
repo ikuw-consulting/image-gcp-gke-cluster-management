@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+cat <<'EOF'
+GCP GKE cluster management image
+
+Common commands:
+  cluster validate-image
+  cluster setup-credentials
+  cluster apply /kd/manifests
+  cluster wait
+  cluster list all
+EOF

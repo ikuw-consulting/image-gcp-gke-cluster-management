@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+kubectl version
+kubectl get nodes -o wide
+kubectl get namespaces
+kubectl get deployments --all-namespaces

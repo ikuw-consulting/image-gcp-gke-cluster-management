@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+required_tools=(
+  age
+  gcloud
+  gke-gcloud-auth-plugin
+  kubectl
+  yq
+)
+
+for tool in "${required_tools[@]}"; do
+  command -v "${tool}" >/dev/null
+done
+
+gcloud --version
+kubectl version --client=true
+yq --version
+age --version
