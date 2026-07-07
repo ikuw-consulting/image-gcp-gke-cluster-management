@@ -1,14 +1,15 @@
-name: build
+name: Docker Build Dockerfile
 
 on:
-  pull_request:
   push:
-    branches:
-      - main
+    branches: [main]
+  pull_request:
+    branches: [main]
 
 jobs:
-  placeholder:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - run: .github/bin/run-tests.bash
+  build:
+    uses: kube-kaptain/buildon-github-actions/.github/workflows/docker-build-dockerfile.yaml@1.1.46
+    permissions:
+      contents: write
+      packages: write
+      checks: write
