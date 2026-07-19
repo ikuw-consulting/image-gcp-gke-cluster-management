@@ -18,4 +18,10 @@ spec:
   global:
     release:
       versioning:
-        maxParts: '2'
+        maxParts: '3'
+        strategy: file-pattern-match
+        patternType: dockerfile-env-kubectl
+        source:
+          subPath: src/docker
+          fileName: Dockerfile
+          prefixParts: 2

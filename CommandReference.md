@@ -16,11 +16,14 @@ Required environment:
 
 ## cluster apply PATH
 
-Applies YAML manifests from `PATH` using `kubectl apply --server-side`.
+Applies YAML manifests from `PATH` using `kubectl apply --server-side` and the
+`kaptain-cluster-seed` field manager. When `PATH` is omitted, the command uses
+`CLUSTER_MANIFEST_DIR`, defaulting to `/kd/manifests`.
 
-## cluster wait
+## cluster wait [SELECTOR]
 
-Waits for non-system deployments to become available.
+Waits for deployments across all namespaces to become available. When provided,
+`SELECTOR` is passed to `kubectl wait` as a label selector.
 
 ## cluster list all
 

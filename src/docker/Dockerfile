@@ -71,6 +71,7 @@ RUN mkdir -p /home/kaptain
 RUN groupadd -g ${KAPTAIN_USER_ID} kaptain
 RUN useradd -u ${KAPTAIN_USER_ID} -g kaptain -d /home/kaptain -s /bin/bash kaptain
 RUN chown kaptain:kaptain /home/kaptain /kd/work /kd/gke /kd/manifests
+# Final consumer images must select USER 4242:4242 after assembly.
 
 COPY scripts/* /kd/bin/
 RUN chmod +x /kd/bin/*
